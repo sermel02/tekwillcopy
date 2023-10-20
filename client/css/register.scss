@@ -1,0 +1,112 @@
+.main {
+  background-image: url('../img/hero2.png');
+  background-size: cover;
+  padding: 80px 0;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  // .main__container
+  &__container {
+  }
+
+  .form {
+    width: 500px;
+
+    border-radius: 20px;
+    border: 2px solid #DBDBDB;
+    background: #FFF;
+    padding: 60px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    // .form__title
+    &__title {
+      color: #000;
+      // text-align: center;
+      font-size: 32px;
+      font-weight: 600;
+    }
+
+    // .form__text
+    &__text {
+      text-align: center;
+      color: #000;
+      font-size: 14px;
+      font-weight: 400;
+      margin-bottom: 35px;
+    }
+
+    // .form__wrapper
+    &__wrapper {
+      display: flex;
+      flex-direction: column;
+      gap: 25px;
+      width: 100%;
+    }
+
+    // .form__input
+    &__input {
+      position: relative;
+
+      input {
+        border-radius: 8px;
+        border: 1px solid #D2D5DA;
+        background: #FFF;
+        box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.05);
+        padding: 16px;
+        width: 100%;
+
+        &:focus {
+          border-color: var(--accent-color);
+          outline: none;
+        }
+
+        &:focus~label {}
+
+      }
+
+      label {
+        position: absolute;
+        left: 10px;
+        padding: 0 5px;
+        font-size: 13px;
+        top: -7.5px;
+        background: #fff;
+        left: 10px;
+        z-index: 2;
+
+        span {
+          color: red;
+          font-size: 8px;
+        }
+      }
+    }
+
+    &__actions {
+      margin-top: 25px;
+      width: 100%;
+      display: flex;
+      justify-content: start;
+      align-items: center;
+      font-size: 13px;
+      gap: 20px;
+
+      a {
+        color: #36aeff;
+      }
+    }
+
+    // .form__btn-reg
+    &__btn-reg {
+      padding: 15px 40px;
+      background-color: #1d1d1d;
+      border-radius: 5px;
+      font-family: "Pixelify Sans";
+      font-size: 16px;
+      color: var(--accent-color);
+    }
+  }
+}

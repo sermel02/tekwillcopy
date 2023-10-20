@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="google-signin-client_id"
+    content="1056915422412-6r4ttkfcpgkti21qbocgo25gqadkd8rg.apps.googleusercontent.com">
+  <title>Document</title>
+  <!-- Styles -->
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/home.css">
+  <link rel="stylesheet" href="/css/authorization.css">
+
+
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+</head>
+
+<body>
+
+  <header class="header">
+    <div class="header__container">
+      <a href="/" class="header__logo">
+        MLE
+      </a>
+
+      <div class="header__menu menu">
+        <a href="#" class="menu__link">Equipment</a>
+        <a href="#" class="menu__link">About us</a>
+        <a href="#" class="menu__link">Blog</a>
+      </div>
+
+      <a href="#" class="header__profile profile modalBtn">
+        <div class="profile__icon">
+          <span class="material-symbols-outlined">account_circle</span>
+        </div>
+        <button class="profile__name">Sign In</button>
+      </a>
+    </div>
+  </header>
+
+  <main class="main">
+    <section class="hero">
+      <div class="hero__container">
+        <div class="hero__text">Make your life easier!</div>
+        <button class="profile__name" id="profileBtn">Sign In</button>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer__container">
+      <div class="footer__left left">
+        <a class="left__logo">MLE</a>
+        <div class="left__text">
+          Get out there & discover your next slope, mountain & destination!
+        </div>
+        <div class="left__copyright">
+          Copyright 2019 MNTN, Inc. Terms & Privacy
+        </div>
+      </div>
+
+      <div class="footer__right right">
+        <div class="right__block">
+          <h2 class="right__title">More on The Blog</h2>
+          <ul class="right__list">
+            <li class="right__list-item"><a href="#">About MNTN</a></li>
+            <li class="right__list-item"><a href="#">Contributors & Writers</a></li>
+            <li class="right__list-item"><a href="#">Write For Us</a></li>
+            <li class="right__list-item"><a href="#">Contact Us</a></li>
+            <li class="right__list-item"><a href="#">Privacy Policy</a></li>
+          </ul>
+        </div>
+        <div class="right__block">
+          <h2 class="right__title">More on MLE</h2>
+          <ul class="right__list">
+            <li class="right__list-item"><a href="#">The Team</a></li>
+            <li class="right__list-item"><a href="#">Jobs</a></li>
+            <li class="right__list-item"><a href="#">Press</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <div class="modal" id="my-modal">
+    <div class="modal__box">
+      <button class="modal__close closebtn" id="close-modal">
+        <span class="material-symbols-outlined">close</span>
+      </button>
+      <form action="/signup" method="post" class="modal__form form">
+        <div class="form__title">Sing Up</div>
+        <div class="form__text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quam duis vitae curabitur amet,
+          fermentum lorem. </div>
+
+        <div class="form__wrapper">
+          <div class="form__group">
+            <label for="email">E-mail<span class="material-symbols-outlined">
+                emergency
+              </span></label>
+            <input type="email" name="email" placeholder="yourmail@gmail.com" required>
+          </div>
+          <div class="form__group">
+            <label for="password">Password<span class="material-symbols-outlined">
+                emergency
+              </span></label>
+            <input type="password" name="password" placeholder="•••••••••••••" required>
+          </div>
+        </div>
+
+        <div class="form__actions">
+          <button class="form__button" type="submit">Sing Up</button>
+        </div>
+        <div class="form__register">
+          <span>Don't have account? <a href="register">Register</a></span>
+        </div>
+      </form>
+
+    </div>
+  </div>
+
+  <script src="/js/index.js"></script>
+</body>
+
+</html>

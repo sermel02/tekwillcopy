@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="google-signin-client_id"
+    content="1056915422412-6r4ttkfcpgkti21qbocgo25gqadkd8rg.apps.googleusercontent.com">
+  <title>Document</title>
+  <!-- Styles -->
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/authorization.css">
+  <link rel="stylesheet" href="/css/profile.css">
+
+
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+</head>
+
+<body>
+
+  <header class="header">
+    <div class="header__container">
+      <a href="/" class="header__logo">
+        MLE
+      </a>
+
+      <div class="header__menu menu">
+        <a href="#" class="menu__link">Equipment</a>
+        <a href="#" class="menu__link">About us</a>
+        <a href="#" class="menu__link">Blog</a>
+      </div>
+
+      <!-- <a href="#" class="header__profile profile modalBtn">
+        <div class="profile__icon">
+          <span class="material-symbols-outlined">account_circle</span>
+        </div>
+        <button class="profile__name" id="profileName">Sign In</button>
+      </a> -->
+      <a href="/signout" class="header__exit">
+        <span>Sing Out</span>
+        <span class="material-symbols-outlined">
+          logout
+        </span>
+      </a>
+    </div>
+  </header>
+
+  <main class="main">
+    <section class="app">
+      <div class="app__container">
+        <div class="app__avatar avatar">
+          <div class="avatar__name">Egor</div>
+          <div class="avatar__image">
+            <img src="https://m.dom-eda.com/uploads/images/catalog/item/86df51de21/c25c94fe96_1000.jpg"
+              alt="profile_avatar">
+          </div>
+          <div class="avatar__stats stats">
+            <div class="stats__title">STATS</div>
+            <div class="stats__wrapper">
+              <div class="stats__item stat">
+                <div class="stat__title">Credits</div>
+                <div class="stat__index">
+                  <span class="material-symbols-outlined">monetization_on</span>
+                  <p>100</p>
+                </div>
+              </div>
+              <div class="stats__item stat">
+                <div class="stat__title">Hearts:</div>
+                <div class="stat__index">
+                  <span class="material-symbols-outlined">favorite</span>
+                  <span class="material-symbols-outlined">favorite</span>
+                  <span class="material-symbols-outlined">favorite</span>
+                </div>
+              </div>
+              <div class="stats__item stat">
+                <div class="stat__title">
+                  <span>Level</span>
+                  <span>1</span>
+                </div>
+                <div class="stat__index">
+                  <progress max="10" value="1"></progress>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="app__todo todo">
+          <div class="todo__title">
+            TODO List
+          </div>
+          <form action="/addTask" class="todo__input">
+            <input type="text" id="taskInput" placeholder="Type a task...">
+            <button id="addTaskBtn">Add</button>
+          </form>
+
+          <div class="todo__wrapper empty" id="tasksWrapper"></div>
+        </div>
+      </div>
+      </div>        
+    </section>
+  </main>
+
+
+  <footer class="footer">
+    <div class="footer__container">
+      <div class="footer__left left">
+        <a class="left__logo">MLE</a>
+        <div class="left__text">
+          Get out there & discover your next slope, mountain & destination!
+        </div>
+        <div class="left__copyright">
+          Copyright 2019 MNTN, Inc. Terms & Privacy
+        </div>
+      </div>
+
+      <div class="footer__right right">
+        <div class="right__block">
+          <h2 class="right__title">More on The Blog</h2>
+          <ul class="right__list">
+            <li class="right__list-item"><a href="#">About MNTN</a></li>
+            <li class="right__list-item"><a href="#">Contributors & Writers</a></li>
+            <li class="right__list-item"><a href="#">Write For Us</a></li>
+            <li class="right__list-item"><a href="#">Contact Us</a></li>
+            <li class="right__list-item"><a href="#">Privacy Policy</a></li>
+          </ul>
+        </div>
+        <div class="right__block">
+          <h2 class="right__title">More on MLE</h2>
+          <ul class="right__list">
+            <li class="right__list-item"><a href="#">The Team</a></li>
+            <li class="right__list-item"><a href="#">Jobs</a></li>
+            <li class="right__list-item"><a href="#">Press</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+
+  <script src="/js/index.js"></script>
+
+  <script>
+
+    // fetch('/profile')
+    //   .then(response => {
+    //     if (response.ok) {
+    //       return response.json();
+    //     } else {
+    //       throw new Error('Failed to fetch user data');
+    //     }
+    //   })
+    //   .then(data => {
+    //     // Ваши действия с данными о пользователе, например, обновление интерфейса
+    //     console.log('User data:', data.user);
+    //   })
+    //   .catch(error => {
+    //     console.error(error);
+    //   });
+
+  </script>
+</body>
+
+</html>

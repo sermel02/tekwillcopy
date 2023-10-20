@@ -1,0 +1,174 @@
+.app {
+  font-family: "Pixelify Sans";
+  background: url("../img/hero2.png");
+  background-size: cover;
+  padding: 60px 0;
+}
+.app__container {
+  display: flex;
+  justify-content: space-between;
+  gap: 50px;
+}
+.app .avatar {
+  width: 350px;
+  border-radius: 10px;
+  border: 5px solid #FFF;
+  background: rgba(0, 0, 0, 0.5);
+  -webkit-backdrop-filter: blur(2px);
+          backdrop-filter: blur(2px);
+  padding: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.app .avatar__name {
+  color: var(--accent-color);
+  font-family: "Pixelify Sans";
+  font-size: 32px;
+  font-weight: 700;
+  text-transform: capitalize;
+  margin-bottom: 10px;
+}
+.app .stats {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.app .stats__title {
+  color: var(--accent-color);
+  font-family: "Pixelify Sans";
+  font-size: 32px;
+  font-weight: 700;
+  text-transform: capitalize;
+  margin-bottom: 10px;
+}
+.app .stats__wrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.app .stats__item {
+  border-radius: 10px;
+  background: #FFF;
+  padding: 20px;
+  width: 100%;
+}
+.app .stats .stat__title {
+  font-size: 30px;
+}
+.app .stats .stat__index {
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  font-size: 25px;
+}
+.app .stats .stat__index span {
+  font-size: 30px;
+}
+.app .stats .stat:last-child .stat__title {
+  display: flex;
+  justify-content: space-between;
+  font-size: 16px;
+}
+.app .stats .stat:last-child .stat__index progress {
+  width: 100%;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+       appearance: none;
+  border: none;
+  border-radius: 10px;
+  height: 10px;
+  margin-top: 10px;
+}
+.app .stats .stat:last-child .stat__index progress::-webkit-progress-bar {
+  background-color: #f0f0f0;
+}
+.app .stats .stat:last-child .stat__index progress::-webkit-progress-bar,
+.app .stats .stat:last-child .stat__index progress::-webkit-progress-value {
+  border-radius: 10px;
+}
+.app .stats .stat:last-child .stat__index progress::-moz-progress-bar {
+  border-radius: 10px;
+  color: red;
+}
+.app .stats .stat:last-child .stat__index progress::-webkit-progress-value {
+  background: var(--accent-color);
+}
+.app .todo {
+  border-radius: 10px;
+  border: 5px solid #FFF;
+  background: rgba(0, 0, 0, 0.5);
+  -webkit-backdrop-filter: blur(2px);
+          backdrop-filter: blur(2px);
+  width: 100%;
+  padding: 40px;
+}
+.app .todo__title {
+  color: var(--accent-color);
+  font-family: "Pixelify Sans";
+  font-size: 40px;
+  font-weight: 700;
+  text-transform: capitalize;
+  margin-bottom: 10px;
+  text-align: center;
+}
+.app .todo__input {
+  display: flex;
+  gap: 10px;
+  width: 60%;
+  margin: 0 auto;
+  margin-bottom: 30px;
+}
+.app .todo__input input {
+  width: 100%;
+  border: 2px solid lightgray;
+  border-radius: 5px;
+  padding: 10px;
+  background-color: #fff;
+}
+.app .todo__input input:focus {
+  border: 2px solid var(--accent-color);
+  outline: none;
+}
+.app .todo__input button {
+  background-color: var(--bg);
+  padding: 5px 20px;
+  color: #FFF;
+  font-family: "Pixelify Sans";
+  border-radius: 5px;
+}
+.app .todo__wrapper {
+  padding-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+.app .todo__wrapper-empty {
+  text-align: center;
+  color: #fff;
+}
+.app .todo .task {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+}
+.app .todo .task__text {
+  background-color: #fff;
+  width: 100%;
+  padding: 10px 20px;
+  border-radius: 5px;
+}
+.app .todo .task__action {
+  display: flex;
+  gap: 10px;
+}
+.app .todo .task__action button {
+  padding: 0 10px;
+  background-color: #fff;
+  border-radius: 10px;
+  height: 40px;
+}

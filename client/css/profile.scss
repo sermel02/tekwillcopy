@@ -1,0 +1,243 @@
+.app {
+  font-family: "Pixelify Sans";
+  background: url('../img/hero2.png');
+  background-size: cover;
+  padding: 60px 0;
+
+  // .app__container
+  &__container {
+    display: flex;
+    justify-content: space-between;
+    gap: 50px;
+  }
+
+  // .app__avatar
+  &__avatar {}
+
+  // .app__todo
+  &__todo {}
+
+
+  .avatar {
+    width: 350px;
+    border-radius: 10px;
+    border: 5px solid #FFF;
+    background: rgba(0, 0, 0, 0.50);
+    backdrop-filter: blur(2px);
+    padding: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+
+    // .avatar__name
+    &__name {
+      color: var(--accent-color);
+      font-family: "Pixelify Sans";
+      font-size: 32px;
+      font-weight: 700;
+      text-transform: capitalize;
+      margin-bottom: 10px;
+    }
+
+    // .avatar__image
+    &__image {}
+
+    // .avatar__stats
+    &__stats {}
+  }
+
+  .stats {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+
+    &__title {
+      color: var(--accent-color);
+      font-family: "Pixelify Sans";
+      font-size: 32px;
+      font-weight: 700;
+      text-transform: capitalize;
+      margin-bottom: 10px;
+    }
+
+    &__wrapper {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    &__item {
+      border-radius: 10px;
+      background: #FFF;
+      padding: 20px;
+      width: 100%;
+    }
+
+    .stat {
+
+      // .stat__title
+      &__title {
+        font-size: 30px;
+      }
+
+      // .stat__index
+      &__index {
+        display: flex;
+        align-items: center;
+        justify-content: start;
+        font-size: 25px;
+
+        span {
+          font-size: 30px;
+        }
+      }
+
+      &:last-child {
+        .stat__title {
+          display: flex;
+          justify-content: space-between;
+          font-size: 16px;
+        }
+
+        .stat__index {
+          // progress {
+          //   width: 100%;
+          // }
+
+          progress {
+            width: 100%;
+            -webkit-appearance: none;
+            appearance: none;
+            border: none;
+            border-radius: 10px;
+            height: 10px;
+            margin-top: 10px;
+          }
+
+          progress::-webkit-progress-bar {
+            background-color: #f0f0f0;
+          }
+
+          progress::-webkit-progress-bar,
+          progress::-webkit-progress-value {
+            border-radius: 10px;
+          }
+
+          progress::-moz-progress-bar {
+            border-radius: 10px;
+            color: red;
+          }
+
+          progress::-webkit-progress-value {
+            background: var(--accent-color);
+          }
+        }
+      }
+    }
+
+  }
+
+
+
+
+  .todo {
+    border-radius: 10px;
+    border: 5px solid #FFF;
+    background: rgba(0, 0, 0, 0.50);
+    backdrop-filter: blur(2px);
+    width: 100%;
+    padding: 40px;
+
+    &__title {
+      color: var(--accent-color);
+      font-family: "Pixelify Sans";
+      font-size: 40px;
+      font-weight: 700;
+      text-transform: capitalize;
+      margin-bottom: 10px;
+      text-align: center;
+    }
+
+    // .todo__input
+    &__input {
+      display: flex;
+      gap: 10px;
+      width: 60%;
+      margin: 0 auto;
+      margin-bottom: 30px;
+
+
+
+      input {
+        width: 100%;
+        border: 2px solid lightgray;
+        border-radius: 5px;
+        padding: 10px;
+        background-color: #fff;
+
+        &:focus {
+          border: 2px solid var(--accent-color);
+          outline: none;
+        }
+      }
+
+
+      button {
+        background-color: var(--bg);
+        padding: 5px 20px;
+        color: #FFF;
+        font-family: "Pixelify Sans";
+        border-radius: 5px;
+      }
+    }
+
+    // .todo__wrapper
+    &__wrapper {
+      padding-top: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 25px;
+    }
+
+    &__wrapper-empty {
+      text-align: center;
+      color: #fff;
+    }
+
+    // .todo__task
+    &__task {}
+
+    .task {
+      display: flex;
+      align-items: center;
+      gap: 40px;
+
+      // .task__text
+      &__text {
+        background-color: #fff;
+        width: 100%;
+        padding: 10px 20px;
+        border-radius: 5px;
+      }
+
+      // .task__action
+      &__action {
+        display: flex;
+        gap: 10px;
+
+        button {
+          padding: 0 10px;
+          background-color: #fff;
+          border-radius: 10px;
+          height: 40px;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,143 @@
+@import url(https://fonts.googleapis.com/css?family=Pixelify+Sans:regular,500,600,700);
+body {
+  font-family: "Pixelify Sans";
+  background: var(--bg);
+}
+
+:root {
+  --accent-color: #00dd00;
+  --bg: #1D1D1D;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+ul {
+  list-style: none;
+}
+
+* img {
+  max-width: 100%;
+}
+
+button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+a {
+  text-decoration: none;
+}
+
+[class*=__container] {
+  max-width: 1790px;
+  margin: 0 auto;
+  padding: 0 30px;
+}
+
+.header {
+  color: #ffffff;
+  padding: 20px 0;
+  color: #FFF;
+  font-size: 23px;
+}
+.header__container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.header__logo {
+  color: var(--accent-color);
+  font-size: 32px;
+  font-weight: 700;
+  line-height: normal;
+  letter-spacing: 0.32px;
+  text-transform: capitalize;
+}
+.header__menu {
+  display: flex;
+  gap: 37px;
+}
+.header__profile {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+}
+.header .menu__link {
+  color: #fff;
+  font-weight: 400;
+}
+.header .profile__icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.header .profile__icon span {
+  font-size: 32px;
+  color: #fff;
+}
+.header .profile__name {
+  color: #fff;
+  font-size: 23px;
+  font-family: "Pixelify Sans";
+}
+.header__exit {
+  color: #FFF;
+  font-family: "Pixelify Sans";
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.header__exit :first-child {
+  font-size: 20px;
+}
+
+.footer {
+  padding: 52px 0;
+}
+.footer__container {
+  display: flex;
+  color: #FFF;
+  justify-content: space-between;
+}
+.footer .left__logo {
+  color: var(--accent-color);
+  font-size: 32px;
+  font-weight: 700;
+  line-height: normal;
+  letter-spacing: 0.32px;
+  text-transform: capitalize;
+}
+.footer .left__text {
+  max-width: 360px;
+  margin-top: 25px;
+  margin-bottom: 120px;
+}
+.footer .left__copyright {
+  color: #565656;
+}
+.footer .right {
+  display: flex;
+  gap: 250px;
+}
+.footer .right__title {
+  margin-bottom: 25px;
+  color: #565656;
+}
+.footer .right__list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.footer .right__list-item a {
+  color: #fff;
+}

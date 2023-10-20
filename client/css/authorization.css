@@ -1,0 +1,138 @@
+.modal {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100vh;
+  z-index: 993;
+  background-color: rgba(0, 0, 0, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow-y: auto;
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.4s, visibility 0.4s;
+}
+.modal__box {
+  z-index: 1;
+  transform: scale(0);
+  transition: transform 0.8s;
+  position: relative;
+}
+.modal__title {
+  font-size: 28px;
+  margin-bottom: 20px;
+}
+.modal__close {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+.modal__close span {
+  font-size: 30px;
+}
+.modal .form {
+  width: 500px;
+  border-radius: 20px;
+  border: 2px solid #DBDBDB;
+  background: #FFF;
+  padding: 60px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.modal .form__title {
+  color: #000;
+  font-size: 32px;
+  font-weight: 600;
+}
+.modal .form__text {
+  text-align: center;
+  color: #000;
+  font-size: 14px;
+  font-weight: 400;
+  margin-bottom: 35px;
+}
+.modal .form__wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  width: 100%;
+}
+.modal .form__group {
+  position: relative;
+}
+.modal .form__group input {
+  border-radius: 8px;
+  border: 1px solid #D2D5DA;
+  background: #FFF;
+  box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.05);
+  padding: 16px;
+  width: 100%;
+}
+.modal .form__group input:focus {
+  border-color: var(--accent-color);
+  outline: none;
+}
+.modal .form__group label {
+  position: absolute;
+  left: 10px;
+  padding: 0 5px;
+  font-size: 13px;
+  top: -7.5px;
+  background: #fff;
+  left: 10px;
+  z-index: 2;
+}
+.modal .form__group label span {
+  color: red;
+  font-size: 8px;
+}
+.modal .form__actions {
+  margin-top: 25px;
+  width: 100%;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  font-size: 13px;
+  gap: 20px;
+}
+.modal .form__actions a {
+  color: #36aeff;
+}
+.modal .form__button {
+  padding: 15px 40px;
+  background-color: #1d1d1d;
+  border-radius: 5px;
+  font-family: "Pixelify Sans";
+  font-size: 16px;
+  color: var(--accent-color);
+}
+.modal .form__register {
+  display: flex;
+  justify-content: start;
+  width: 100%;
+  margin-top: 20px;
+}
+.modal .form__register span a {
+  color: #36aeff;
+}
+.modal .form__google {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+.modal .form__google span {
+  font-size: 12px;
+}
+.modal.open {
+  visibility: visible;
+  opacity: 1;
+}
+.modal.open .modal__box {
+  transform: scale(1);
+}
