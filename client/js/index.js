@@ -13,10 +13,12 @@ if (modalBtns) {
 	})
 }
 
+
 if (modalClose) {
 	modalClose.forEach(btn => {
 		btn.addEventListener('click', () => {
 			var modal = document.getElementById('my-modal');
+
 			if (modal) {
 				modal.classList.remove('open');
 				document.body.style.overflowY = 'scroll';
