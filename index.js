@@ -14,7 +14,7 @@ const port = 3000;
 
 // ---------------- Middleware ---------------- //
 app.use(bodyParser.urlencoded({ extended: true })).use(express.static('client')).use(express.json()).use(session({
-  secret: 'secretkey', // Замените на свой секретный ключ
+  secret: 'tekwillProject', 
   resave: false,
   saveUninitialized: true,
 })).use(express.json());
