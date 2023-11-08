@@ -113,7 +113,7 @@ app.post('/register', async (req, res) => {
   const existingUser = await User.findOne({ email });
 
   if (existingUser) {
-    return res.status(400).json({ error: 'Пользователь с таким email уже существует' });
+    return res.status(400).json({ message: 'Пользователь с таким email уже существует' });
   }
 
   const newUser = new User({ email, password });
@@ -138,7 +138,7 @@ app.post('/signup', async (req, res) => {
   const user = await User.findOne({ email });
   console.log(user);
   if (!user) {
-    return res.status(401).json({ error: 'Пользователь не найден' });
+    return res.status(401).json({ message: 'Пользователь не найден' });
   }
 
   // Сравниваем введенный пароль с хранимым паролем
@@ -152,7 +152,7 @@ app.post('/signup', async (req, res) => {
     req.session.user = reqUser;
     res.redirect('/profile'); // Перенаправляем пользователя
   } else {
-    return res.status(401).json({ error: 'Неправильный пароль' });
+    return res.status(401).json({ message: 'Неправильный пароль' });
   }
 });
 

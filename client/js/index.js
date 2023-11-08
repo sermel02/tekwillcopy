@@ -27,6 +27,59 @@ if (modalClose) {
 	})
 }
 
+// ----------------- SignUp ----------------- //
+
+document.querySelector('.modal__form').addEventListener('submit', function (e) {
+  e.preventDefault(); // Предотвращаем стандартное поведение формы (перезагрузку страницы)
+  const email = document.querySelector('input[name="email"]').value;
+  const password = document.querySelector('input[name="password"]').value;
+
+  fetch('http://localhost:3000/signup', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ email, password }),
+  })
+    .then(response => {
+      if (response.status === 401) {
+        return response.json().then(error => {
+          alert(error.message);
+        });
+      } else {
+        window.location.replace("http://localhost:3000/profile");
+      }
+    })
+});
+
+// ----------------- Register ----------------- //
+
+const registrationForm = document.getElementById('form__register');
+const emailInput = document.getElementById('emailReg');
+const passwordInput = document.getElementById('passwordReg');
+const errorMessage = document.getElementById('error-message');
+
+registrationForm.addEventListener('submit', async (event) => {
+	event.preventDefault();
+
+	const email = emailInput.value;
+	const password = passwordInput.value;
+
+	const response = await fetch('http://localhost:3000/register', {
+		method: 'POST',
+		headers: {
+			'Content-Type': 'application/json',
+		},
+		body: JSON.stringify({ email, password }),
+	});
+
+	if (response.status === 400) {
+		const data = await response.json();
+		alert(data.message)
+	} else  {
+		window.location.replace("http://localhost:3000");
+	}
+});
 
 
 // ----------------- TODO ----------------- //
