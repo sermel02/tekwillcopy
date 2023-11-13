@@ -116,6 +116,84 @@
   </footer>
 
 
-  <script src="/js/index.js"></script>
+  <script src="../js/index.js"></script>
+  <script>
+    // ----------------- Register ----------------- //
+
+    const registrationForm = document.getElementById('form__register');
+    const emailInput = document.getElementById('emailReg');
+    const passwordInput = document.getElementById('passwordReg');
+    const errorMessage = document.getElementById('error-message');
+
+    // registrationForm.addEventListener('submit', async (event) => {
+    // 	event.preventDefault();
+
+    // 	const email = emailInput.value;
+    // 	const password = passwordInput.value;
+
+    // 	const response = await fetch('http://localhost:3000/register', {
+    // 		method: 'POST',
+    // 		headers: {
+    // 			'Content-Type': 'application/json',
+    // 		},
+    // 		body: JSON.stringify({ email, password }),
+    // 	});
+
+    // 	if (response.status === 400) {
+    // 		const data = await response.json();
+    // 		alert(data.message)
+    // 	} else  {
+    // 		window.location.replace("http://localhost:3000");
+    // 	}
+    // });
+
+
+    registrationForm.addEventListener('submit', (event) => {
+      event.preventDefault();
+
+      const email = emailInput.value;
+      const password = passwordInput.value;
+
+      //  fetch('http://localhost:3000/register', {
+      // 	method: 'POST',
+      // 	headers: {
+      // 		'Content-Type': 'application/json',
+      // 	},
+      // 	body: JSON.stringify({ email, password }),
+      // })
+      // 	.then(response => {
+      // 		if (response.status === 401) {
+      // 			alert('Ошибка при регистрации')
+      // 			// return response.json().then(error => {
+      // 			// 	alert(error.message);
+      // 			// 	alert(email, password);
+      // 			// });
+      // 		} else {
+      // 			window.location.replace("http://localhost:3000/profile");
+      // 		}
+      // 	})
+
+
+      fetch('http://localhost:3000/registerin', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email, password }),
+      })
+        .then(response => {
+          if (response.status === 401) {
+            return response.text().then(errorMessage => {
+              console.log('error: ', errorMessage);
+              alert(errorMessage);
+            });
+          } else {
+            window.location.replace("http://localhost:3000/profile");
+          }
+        });
+    });
+
+  </script>
 </body>
+
 </html>

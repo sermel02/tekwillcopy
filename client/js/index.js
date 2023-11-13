@@ -28,58 +28,55 @@ if (modalClose) {
 }
 
 // ----------------- SignUp ----------------- //
-
 document.querySelector('.modal__form').addEventListener('submit', function (e) {
-  e.preventDefault(); // Предотвращаем стандартное поведение формы (перезагрузку страницы)
-  const email = document.querySelector('input[name="email"]').value;
-  const password = document.querySelector('input[name="password"]').value;
+	e.preventDefault(); // Предотвращаем стандартное поведение формы (перезагрузку страницы)
+	const email = document.querySelector('input[name="email"]').value;
+	const password = document.querySelector('input[name="password"]').value;
 
-  fetch('http://localhost:3000/signup', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({ email, password }),
-  })
-    .then(response => {
-      if (response.status === 401) {
-        return response.json().then(error => {
-          alert(error.message);
-        });
-      } else {
-        window.location.replace("http://localhost:3000/profile");
-      }
-    })
-});
-
-// ----------------- Register ----------------- //
-
-const registrationForm = document.getElementById('form__register');
-const emailInput = document.getElementById('emailReg');
-const passwordInput = document.getElementById('passwordReg');
-const errorMessage = document.getElementById('error-message');
-
-registrationForm.addEventListener('submit', async (event) => {
-	event.preventDefault();
-
-	const email = emailInput.value;
-	const password = passwordInput.value;
-
-	const response = await fetch('http://localhost:3000/register', {
+	fetch('http://localhost:3000/signup', {
 		method: 'POST',
 		headers: {
 			'Content-Type': 'application/json',
 		},
 		body: JSON.stringify({ email, password }),
-	});
-
-	if (response.status === 400) {
-		const data = await response.json();
-		alert(data.message)
-	} else  {
-		window.location.replace("http://localhost:3000");
-	}
+	})
+		.then(res => {
+			if (res.status === 401) {
+				return res.json().then(error => {
+					alert(error.message);
+				});
+			} else if(res.status === 200) {
+				window.location.href = 'http://localhost:3000/profile'
+			}
+		})
 });
+
+// Предполагается, что у вас есть форма с id "signupForm"
+// const form = document.querySelector('.modal__form');
+// form.addEventListener('submit', async function (event) {
+//   event.preventDefault();
+
+//   const formData = new FormData(form);
+
+//   try {
+//     const response = await fetch('/signup', {
+//       method: 'POST',
+//       body: formData,
+//     });
+
+//     if (!response.ok) {
+//       const errorData = await response.json();
+//       // Предполагается, что у вас есть функция для отображения предупреждения
+//       alert(errorData.message);
+//     } else {
+//       // Перенаправление или обработка успешного сценария по мере необходимости
+//       window.location.href = '/profile';
+//     }
+//   } catch (error) {
+//     console.error('Произошла ошибка:', error);
+//     // Обработка других ошибок при необходимости
+//   }
+// });
 
 
 // ----------------- TODO ----------------- //
@@ -169,3 +166,4 @@ function taskNotDone(button) {
 }
 
 renderWrapper()
+

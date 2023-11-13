@@ -7,14 +7,13 @@ const session = require('express-session');
 const fs = require('fs');
 const jwt = require('jsonwebtoken');
 
-
 // ---------------- Переменные ---------------- //
 const app = express();
 const port = 3000;
 
 // ---------------- Middleware ---------------- //
 app.use(bodyParser.urlencoded({ extended: true })).use(express.static('client')).use(express.json()).use(session({
-  secret: 'tekwillProject', 
+  secret: 'tekwillProject',
   resave: false,
   saveUninitialized: true,
 })).use(express.json());
@@ -87,73 +86,52 @@ app.get('/register', (req, res) => {
 })
 
 app.get('/profile', (req, res) => {
-  const user = req.session.user;
-  if (user) {
     res.status(200).sendFile(__dirname + '/client/pages/profile.html');
-  } else {
-    res.status(401).json({ error: 'Пользователь не аутентифицирован' });
-  }
 });
-
-// app.get('/profile', (req, res) => {
-//   const user = req.session.user;
-//   console.log("User in session(profile):", user)
-//   if (user) {
-//     res.status(200).sendFile(__dirname + '/client/pages/profile.html');
-//   } else {
-//     res.status(401).json({ error: 'Пользователь не аутентифицирован' });
-//   }
-// })
 
 // ---------------- Post запросы ---------------- //
 app.post('/register', async (req, res) => {
-  const email = req.body.email;
-  const password = req.body.password;
+  const { email, password } = req.body;
 
-  const existingUser = await User.findOne({ email });
+  await User.findOne({ email })
+    .exec()
+    .then(user => {
+      if (user) {
+        return res.status(401).json({ message: 'Пользователь с таким email уже существует' });
+      } else {
+        User.create({ email: email, password: password });
+        req.session.user = user;
 
-  if (existingUser) {
-    return res.status(400).json({ message: 'Пользователь с таким email уже существует' });
-  }
-
-  const newUser = new User({ email, password });
-  await newUser.save();
-
-  // После успешной регистрации, автоматически аутентифицировать пользователя
-  const reqUser = {
-    email: newUser.email,
-    password: newUser.password
-  };
-  req.session.user = reqUser;
-
-
-  res.status(200).redirect('/'); // Перенаправляем пользователя на главную страницу
+        res.status(200).redirect('/profile');
+      }
+    })
+    .catch(err => {
+      res.status(500).json({ message: 'Ошибка сервера' });
+    });
 });
 
+
 app.post('/signup', async (req, res) => {
-  const email = req.body.email;
-  const password = req.body.password;
+  console.log(req.body);
+  const { email, password } = req.body;
 
-  console.log(email, password);
-  const user = await User.findOne({ email });
-  console.log(user);
-  if (!user) {
-    return res.status(401).json({ message: 'Пользователь не найден' });
-  }
 
-  // Сравниваем введенный пароль с хранимым паролем
-  if (password === user.password) {
-    // Сохраняем только информацию о пользователе в сессии
-    // req.session.userId = user._id; // Пример: сохраняем ID пользователя
-    const reqUser = {
-      email: user.email,
-      password: user.password
-    };
-    req.session.user = reqUser;
-    res.redirect('/profile'); // Перенаправляем пользователя
-  } else {
-    return res.status(401).json({ message: 'Неправильный пароль' });
-  }
+  await User.findOne({ email })
+    .exec()
+    .then(user => {
+      if (user) {
+        if (user.password === password) {
+          res.status(200).redirect('/profile');
+        } else {
+          res.status(401).json({ message: 'Неправильный логин или пароль' });
+        }
+      } else {
+        res.status(401).json({ message: 'Неправильный логин или пароль' });
+      }
+    })
+    .catch(err => {
+      res.status(500).json({ message: 'Ошибка сервера' });
+    });
 });
 
 app.get('/signout', (req, res) => {
