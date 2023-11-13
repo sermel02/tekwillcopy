@@ -15,7 +15,7 @@ const port = 3000;
 app.use(bodyParser.urlencoded({ extended: true })).use(express.static('client')).use(express.json()).use(session({
   secret: 'tekwillProject',
   resave: false,
-  saveUninitialized: true,
+  saveUninitialized: false,
 })).use(express.json());
 
 
@@ -91,23 +91,23 @@ app.get('/profile', (req, res) => {
 
 // ---------------- Post запросы ---------------- //
 app.post('/register', async (req, res) => {
-  const { email, password } = req.body;
+	const { email, password } = req.body;
 
-  await User.findOne({ email })
-    .exec()
-    .then(user => {
-      if (user) {
-        return res.status(401).json({ message: 'Пользователь с таким email уже существует' });
-      } else {
-        User.create({ email: email, password: password });
-        req.session.user = user;
+	try {
+			const existingUser = await User.findOne({ email }).exec();
 
-        res.status(200).redirect('/profile');
-      }
-    })
-    .catch(err => {
-      res.status(500).json({ message: 'Ошибка сервера' });
-    });
+			if (existingUser) {
+					return res.status(401).send({message: "smth wrong"})
+			}else {
+				const newUser = await User.create({ email, password });
+				req.session.user = newUser;
+
+				return res.status(200).redirect('/profile');
+			}
+	} catch (err) {
+			console.error(err);
+			return res.status(500).json({ message: 'Ошибка сервера' });
+	}
 });
 
 

@@ -78,6 +78,39 @@ document.querySelector('.modal__form').addEventListener('submit', function (e) {
 //   }
 // });
 
+// ----------------- Register ----------------- //
+
+
+document.addEventListener('DOMContentLoaded', function () {
+	document.querySelector('.form__register').addEventListener('submit', function (e) {
+		e.preventDefault();
+
+		const email = document.getElementById('emailReg').value;
+		const password = document.getElementById('passwordReg').value;
+
+		fetch('http://localhost:3000/register', {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json',
+			},
+			body: JSON.stringify({ email, password }),
+		})
+		.then(res => {
+			if (res.status !== 200) {
+				return res.json().then(error => {
+					alert(error.message); // Display the error message
+				});
+			} else if (res.status === 200) {
+				window.location.href = 'http://localhost:3000/profile';
+			}
+		})
+		.catch(err => {
+			console.error('Error during registration:', err);
+			alert('An error occurred during registration. Please try again.'); // Display a generic error message
+		});
+	});
+});
+
 
 // ----------------- TODO ----------------- //
 const tasksWrapper = document.getElementById('tasksWrapper');
