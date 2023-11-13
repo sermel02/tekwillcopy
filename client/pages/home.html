@@ -33,12 +33,17 @@
         <a href="#" class="menu__link">Blog</a>
       </div>
 
-      <a class="header__profile profile modalBtn">
+      <!-- <a class="header__profile profile modalBtn">
         <div class="profile__icon">
           <span class="material-symbols-outlined">account_circle</span>
         </div>
         <button class="profile__name">Sign In</button>
-      </a>
+      </a> -->
+
+      <div class="header__actions">
+        <a class="signinBtn">singin</a>
+        <a class="registerBtn">register</a>
+      </div>
     </div>
   </header>
 
@@ -46,7 +51,7 @@
     <section class="hero">
       <div class="hero__container">
         <div class="hero__text">Make your life easier!</div>
-        <button class="hero__button modalBtn">Sign In</button>
+        <button class="hero__button signinBtn">Sign In</button>
       </div>
     </section>
   </main>
@@ -86,12 +91,14 @@
     </div>
   </footer>
 
-  <div class="modal" id="my-modal">
+
+  <!-- SignIn Modal -->
+  <div class="modal" id="signin-modal">
     <div class="modal__box">
-      <button class="modal__close closebtn" id="close-modal">
+      <button class="modal__close closebtn" id="signin-modal-close">
         <span class="material-symbols-outlined">close</span>
       </button>
-      <form action="/signup" method="post" class="modal__form form">
+      <form id="signin-modal-form" action="/signup" method="post" class="modal__form form">
         <div class="form__title">Sing Up</div>
         <div class="form__text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quam duis vitae curabitur amet,
           fermentum lorem. </div>
@@ -101,13 +108,13 @@
             <label for="email">E-mail<span class="material-symbols-outlined">
                 emergency
               </span></label>
-            <input type="email" name="email" placeholder="yourmail@gmail.com" required>
+            <input id="signin-modal-email" type="email" name="email" placeholder="yourmail@gmail.com" required>
           </div>
           <div class="form__group">
             <label for="password">Password<span class="material-symbols-outlined">
                 emergency
               </span></label>
-            <input type="password" name="password" placeholder="•••••••••••••" required>
+            <input id="signin-modal-password" type="password" name="password" placeholder="•••••••••••••" required>
           </div>
         </div>
 
@@ -117,6 +124,44 @@
         <div class="form__register">
           <span>Don't have account? <a href="register">Register</a></span>
         </div>
+      </form>
+
+    </div>
+  </div>
+
+
+  <!-- Register Modal -->
+  <div class="modal" id="register-modal">
+    <div class="modal__box">
+      <button class="modal__close closebtn" id="register-modal-close">
+        <span class="material-symbols-outlined">close</span>
+      </button>
+      <form id="register-modal-form" action="/register" method="post" class="modal__form form">
+        <div class="form__title">Register</div>
+        <div class="form__text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quam duis vitae curabitur amet,
+          fermentum lorem. </div>
+
+        <div class="form__wrapper">
+          <div class="form__group">
+            <label for="email">E-mail<span class="material-symbols-outlined">
+                emergency
+              </span></label>
+            <input id="register-modal-email" type="email" name="email" placeholder="yourmail@gmail.com" required>
+          </div>
+          <div class="form__group">
+            <label for="password">Password<span class="material-symbols-outlined">
+                emergency
+              </span></label>
+            <input id="register-modal-password" type="password" name="password" placeholder="•••••••••••••" required>
+          </div>
+        </div>
+
+        <div class="form__actions">
+          <button class="form__button" type="submit">Register</button>
+        </div>
+        <!-- <div class="form__register">
+          <span>Don't have account? <a href="register">Register</a></span>
+        </div> -->
       </form>
 
     </div>

@@ -41,7 +41,7 @@
 
   <main class="main">
     <div class="main__container">
-      <form action="/register" method="post" class="form form__register">
+      <form action="/registerin" method="post" class="form form__register">
         <div class="form__title">Welcome</div>
         <div class="form__text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quam duis vitae curabitur amet,
           fermentum lorem. </div>
@@ -119,59 +119,16 @@
   <script src="../js/index.js"></script>
   <script>
     // ----------------- Register ----------------- //
-		const registrationForm = document.getElementById('form__register');
+    const registrationForm = document.getElementById('form__register');
     const emailInput = document.getElementById('emailReg');
     const passwordInput = document.getElementById('passwordReg');
     const errorMessage = document.getElementById('error-message');
 
-    // registrationForm.addEventListener('submit', async (event) => {
-    // 	event.preventDefault();
-
-    // 	const email = emailInput.value;
-    // 	const password = passwordInput.value;
-
-    // 	const response = await fetch('http://localhost:3000/register', {
-    // 		method: 'POST',
-    // 		headers: {
-    // 			'Content-Type': 'application/json',
-    // 		},
-    // 		body: JSON.stringify({ email, password }),
-    // 	});
-
-    // 	if (response.status === 400) {
-    // 		const data = await response.json();
-    // 		alert(data.message)
-    // 	} else  {
-    // 		window.location.replace("http://localhost:3000");
-    // 	}
-    // });
-
-
-    registrationForm.addEventListener('submit', (event) => {
-      event.preventDefault();
-
-      const email = emailInput.value;
-      const password = passwordInput.value;
-
-      //  fetch('http://localhost:3000/register', {
-      // 	method: 'POST',
-      // 	headers: {
-      // 		'Content-Type': 'application/json',
-      // 	},
-      // 	body: JSON.stringify({ email, password }),
-      // })
-      // 	.then(response => {
-      // 		if (response.status === 401) {
-      // 			alert('Ошибка при регистрации')
-      // 			// return response.json().then(error => {
-      // 			// 	alert(error.message);
-      // 			// 	alert(email, password);
-      // 			// });
-      // 		} else {
-      // 			window.location.replace("http://localhost:3000/profile");
-      // 		}
-      // 	})
-
+    // ----------------- SignUp ----------------- //
+    registrationForm.addEventListener('submit', function (e) {
+      e.preventDefault(); // Предотвращаем стандартное поведение формы (перезагрузку страницы)
+      const email = document.querySelector('input[name="email"]').value;
+      const password = document.querySelector('input[name="password"]').value;
 
       fetch('http://localhost:3000/registerin', {
         method: 'POST',
@@ -180,18 +137,16 @@
         },
         body: JSON.stringify({ email, password }),
       })
-        .then(response => {
-          if (response.status === 401) {
-            return response.text().then(errorMessage => {
-              console.log('error: ', errorMessage);
-              alert(errorMessage);
+        .then(res => {
+          if (res.status === 401) {
+            return res.json().then(error => {
+              alert(error.message);
             });
-          } else {
-            window.location.replace("http://localhost:3000/profile");
+          } else if (res.status === 200) {
+            window.location.href = 'http://localhost:3000/profile'
           }
-        });
+        })
     });
-
   </script>
 </body>
 

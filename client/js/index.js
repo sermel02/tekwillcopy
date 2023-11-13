@@ -1,92 +1,89 @@
-const modalBtns = document.querySelectorAll('.modalBtn');
-const modalClose = document.querySelectorAll('.closebtn')
+// ----------------- SignUp ----------------- //
+const signinBtns = document.querySelectorAll('.signinBtn');
+const signinModal = document.getElementById('signin-modal');
+const signinModalClose = document.getElementById('signin-modal-close');
+const signinModalEmail = document.getElementById('signin-modal-email');
+const signinModalPassword = document.getElementById('signin-modal-password');
+const signinModalForm = document.getElementById('signin-modal-form');
 
-if (modalBtns) {
-	modalBtns.forEach(btn => {
+if (signinBtns) {
+	signinBtns.forEach(btn => {
 		btn.addEventListener('click', () => {
-			var modal = document.getElementById('my-modal');
-			if (modal) {
-				modal.classList.add('open');
+			if (signinModal) {
+				signinModal.classList.add('open');
 				document.body.style.overflow = 'hidden';
 			}
 		})
 	})
 }
 
+if (signinModalClose) {
+	signinModalClose.addEventListener('click', () => {
+		if (signinModal) {
+			signinModal.classList.remove('open');
+			document.body.style.overflowY = 'scroll';
+		}
+	})
+}
 
-if (modalClose) {
-	modalClose.forEach(btn => {
+if (signinModalForm) {
+	signinModalForm.addEventListener('submit', function (e) {
+		e.preventDefault();
+		const email = signinModalEmail.value;
+		const password = signinModalPassword.value;
+
+		fetch('http://localhost:3000/signup', {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json',
+			},
+			body: JSON.stringify({ email, password }),
+		})
+			.then(res => {
+				if (res.status === 401) {
+					return res.json().then(error => {
+						alert(error.message);
+					});
+				} else if (res.status === 200) {
+					window.location.href = 'http://localhost:3000/profile'
+				}
+			})
+	});
+}
+
+// ----------------- Register ----------------- //
+const registerBtns = document.querySelectorAll('.registerBtn');
+const registerModal = document.getElementById('register-modal');
+const registerModalClose = document.getElementById('register-modal-close');
+const registerModalEmail = document.getElementById('register-modal-email');
+const registerModalPassword = document.getElementById('register-modal-password');
+const registerModalForm = document.getElementById('register-modal-form');
+
+if (registerBtns) {
+	registerBtns.forEach(btn => {
 		btn.addEventListener('click', () => {
-			var modal = document.getElementById('my-modal');
-
-			if (modal) {
-				modal.classList.remove('open');
-				document.body.style.overflowY = 'scroll';
+			if (registerModal) {
+				registerModal.classList.add('open');
+				document.body.style.overflow = 'hidden';
 			}
 		})
 	})
 }
 
-// ----------------- SignUp ----------------- //
-document.querySelector('.modal__form').addEventListener('submit', function (e) {
-	e.preventDefault(); // Предотвращаем стандартное поведение формы (перезагрузку страницы)
-	const email = document.querySelector('input[name="email"]').value;
-	const password = document.querySelector('input[name="password"]').value;
-
-	fetch('http://localhost:3000/signup', {
-		method: 'POST',
-		headers: {
-			'Content-Type': 'application/json',
-		},
-		body: JSON.stringify({ email, password }),
+if (registerModalClose) {
+	registerModalClose.addEventListener('click', () => {
+		if (registerModal) {
+			registerModal.classList.remove('open');
+			document.body.style.overflowY = 'scroll';
+		}
 	})
-		.then(res => {
-			if (res.status === 401) {
-				return res.json().then(error => {
-					alert(error.message);
-				});
-			} else if(res.status === 200) {
-				window.location.href = 'http://localhost:3000/profile'
-			}
-		})
-});
+}
 
-// Предполагается, что у вас есть форма с id "signupForm"
-// const form = document.querySelector('.modal__form');
-// form.addEventListener('submit', async function (event) {
-//   event.preventDefault();
-
-//   const formData = new FormData(form);
-
-//   try {
-//     const response = await fetch('/signup', {
-//       method: 'POST',
-//       body: formData,
-//     });
-
-//     if (!response.ok) {
-//       const errorData = await response.json();
-//       // Предполагается, что у вас есть функция для отображения предупреждения
-//       alert(errorData.message);
-//     } else {
-//       // Перенаправление или обработка успешного сценария по мере необходимости
-//       window.location.href = '/profile';
-//     }
-//   } catch (error) {
-//     console.error('Произошла ошибка:', error);
-//     // Обработка других ошибок при необходимости
-//   }
-// });
-
-// ----------------- Register ----------------- //
-
-
-document.addEventListener('DOMContentLoaded', function () {
-	document.querySelector('.form__register').addEventListener('submit', function (e) {
+if (registerModalForm) {
+	registerModalForm.addEventListener('submit', function (e) {
 		e.preventDefault();
-
-		const email = document.getElementById('emailReg').value;
-		const password = document.getElementById('passwordReg').value;
+		const email = registerModalEmail.value;
+		const password = registerModalPassword.value;
 
 		fetch('http://localhost:3000/register', {
 			method: 'POST',
@@ -95,21 +92,18 @@ document.addEventListener('DOMContentLoaded', function () {
 			},
 			body: JSON.stringify({ email, password }),
 		})
-		.then(res => {
-			if (res.status !== 200) {
-				return res.json().then(error => {
-					alert(error.message); // Display the error message
-				});
-			} else if (res.status === 200) {
-				window.location.href = 'http://localhost:3000/profile';
-			}
-		})
-		.catch(err => {
-			console.error('Error during registration:', err);
-			alert('An error occurred during registration. Please try again.'); // Display a generic error message
-		});
+			.then(res => {
+				if (res.status === 401) {
+					return res.json().then(error => {
+						alert(error.message);
+					});
+				} else if (res.status === 200) {
+					window.location.href = 'http://localhost:3000/profile'
+				}
+			})
 	});
-});
+}
+
 
 
 // ----------------- TODO ----------------- //

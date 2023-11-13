@@ -86,29 +86,48 @@ app.get('/register', (req, res) => {
 })
 
 app.get('/profile', (req, res) => {
-    res.status(200).sendFile(__dirname + '/client/pages/profile.html');
+  res.status(200).sendFile(__dirname + '/client/pages/profile.html');
 });
 
 // ---------------- Post запросы ---------------- //
+// ---------------- Post запросы ---------------- //
 app.post('/register', async (req, res) => {
-	const { email, password } = req.body;
+  const { email, password } = req.body;
 
-	try {
-			const existingUser = await User.findOne({ email }).exec();
+  await User.findOne({ email })
+    .exec()
+    .then(user => {
+      if (user) {
+        return res.status(401).json({ message: 'Пользователь с таким email уже существует' });
+      } else {
+        User.create({ email: email, password: password });
+        req.session.user = user;
 
-			if (existingUser) {
-					return res.status(401).send({message: "smth wrong"})
-			}else {
-				const newUser = await User.create({ email, password });
-				req.session.user = newUser;
-
-				return res.status(200).redirect('/profile');
-			}
-	} catch (err) {
-			console.error(err);
-			return res.status(500).json({ message: 'Ошибка сервера' });
-	}
+        res.status(200).redirect('/profile');
+      }
+    })
+    .catch(err => {
+      res.status(500).json({ message: 'Ошибка сервера' });
+    });
 });
+// app.post('/register', async (req, res) => {
+//   const { email, password } = req.body;
+
+//   try {
+//     const existingUser = await User.findOne({ email }).exec();
+
+//     if (existingUser) {
+//       res.status(401).json({ message: "smth wrong" })
+//     } else {
+//       const newUser = await User.create({ email, password });
+//       req.session.user = newUser;
+//       res.status(200).redirect('/profile');
+//     }
+//   } catch (err) {
+//     console.error(err);
+//     return res.status(500).json({ message: 'Ошибка сервера' });
+//   }
+// });
 
 
 app.post('/signup', async (req, res) => {
