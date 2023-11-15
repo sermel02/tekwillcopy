@@ -100,6 +100,35 @@ a {
 .header__exit :first-child {
   font-size: 20px;
 }
+.header__actions {
+  display: flex;
+  gap: 20px;
+}
+.header .signinBtn {
+  background-color: #fff;
+  padding: 5px 10px;
+  border: 1px solid #1D1D1D;
+  border-radius: 20px;
+  color: #1D1D1D;
+  font-size: 18px;
+  transition: all 0.2s;
+}
+.header .signinBtn:hover {
+  background: #565656;
+  color: #fff;
+  cursor: pointer;
+  border-color: #fff;
+}
+.header .registerBtn {
+  border: 1px solid #fff;
+  border-radius: 20px;
+  padding: 5px 10px;
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  cursor: pointer;
+}
 
 .footer {
   padding: 52px 0;
